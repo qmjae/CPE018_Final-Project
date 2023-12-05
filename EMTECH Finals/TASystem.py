@@ -37,7 +37,8 @@ while True:
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 5)  # Increase rectangle thickness to make it more visible
 
         if logged_in:  # If user is logged in, display Time In above the bounding box
-            cv2.putText(frame, f"Time In: {current_time}", (x, y - 20), font, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
+            cv2.putText(frame, f"TIME IN: {current_time}", (x, y - 20), font, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
+            cv2.putText(frame, f"NAME: {user_name}", (x, y + h + 30), font, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
 
     if not logged_in:  # Display options on the video feed only if not logged in
         cv2.putText(frame, "1. Log-in", (20, 50), font, 1, (0, 255, 0), 2, cv2.LINE_AA)  # Change font color to green
@@ -54,7 +55,7 @@ while True:
         # Display "Time In" on the video feed
         current_time = datetime.now().strftime('%H:%M:%S')
         logged_in = True
-        print(f"Image captured for {user_name} at {current_time}")
+        print(f"Logged in: {user_name} at {current_time}")
 
     elif key & 0xFF == ord('2'):  # Exiting the loop
         break
